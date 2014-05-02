@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+
+<html ng-app='appy'>
+
+<head>
+  <title>Angular!</title>
+  <link rel="stylesheet" type="text/css" href="angular.css">
+  <script src="angular.min.js"></script>
+  <script src="angular3.js"></script>
+
+</head>
+
+<body>
+
+ <h1>Angular!</h1>
+
+ <div ng-controller="Controller1">
+  <input type="checkbox" ng-model="youCheckedIt"> {{checkMessage}} 
+  <br/>
+  <input ng-model="someText"> {{someText}}
+  <br/>
+  <button ng-click="submitStuff()">Press Me</button>
+ </div>	
+
+ <br/>
+
+ <div ng-controller="Controller1">
+  <input type="checkbox" ng-model="youCheckedIt"> {{checkMessage}} 
+   <br/> 
+   <input ng-model="someText"> {{someText}} 
+   <br/>
+   <button ng-click="submitStuff()">Press Me</button>
+ </div>
+
+ <br/>
+ <div ng-controller='DeathrayMenuController'>
+   <button ng-click='toggleMenu()'>Toggle Menu</button>
+   <ul ng-show='menuState.show' class="is-red-{{isRed}}">
+     <li ng-click='stun()'>Stun</li>
+     <li ng-click='disintegrate()'>Disintegrate</li>
+     <li ng-click='erase()'>Erase from history</li>
+   </ul>
+ </div>
+
+<br/>
+<div 
+  ng-class="{isYellow: isYellow, isBlue: isBlue}" 
+  ng-controller="ColorController"
+>
+  <h1>Color Me Sideways!</h1>
+  <button ng-click="turnYellow()">Turn Me Yellow</button>
+  <button ng-click="turnBlue()">Turn Me Blue</button>
+</div>
+
+<br/>
+<table ng-controller="TableController">
+  <tr 
+    ng-controller="TableRowController",
+    ng-repeat="person in people" 
+    ng-click='handleTableClick()'
+    ng-class='{isSelected: isSelected, selectable: true}'
+  > 
+  	<td>{{person.name}}</td>
+  	<td>{{person.job}}</td>
+  </tr>
+</table>
+
+
+  
+
+</body>
+</html>
