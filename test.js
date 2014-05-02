@@ -8,7 +8,7 @@ appy.controller('SignUpForm', function($scope) {
 	$scope.validUserIcon = ''; 	
 	$scope.validPassIcon = ''; 	
 	$scope.validConfirmIcon = ''; 	
-
+	$scope.message = ''; 
 
 	$scope.validateUsername = function() {
 		if(usernameRegEx.test($scope.username)) {
@@ -16,6 +16,7 @@ appy.controller('SignUpForm', function($scope) {
 		} else {
 			$scope.validUserIcon = 'glyphicon glyphicon-exclamation-sign text-danger'; 
 		}
+		$scope.message = 'Username must be at least 3 characters long and can contain letters and numbers.'; 
 	};
 
 
@@ -25,6 +26,7 @@ appy.controller('SignUpForm', function($scope) {
 		} else {
 			$scope.validPassIcon = 'glyphicon glyphicon-exclamation-sign text-danger'; 
 		}
+		$scope.message = 'Password must be at leat 8 characters long and up to 64.'; 		
 	};
 
 	
@@ -34,6 +36,7 @@ appy.controller('SignUpForm', function($scope) {
 		} else {
 			$scope.validConfirmIcon = 'glyphicon glyphicon-exclamation-sign text-danger'; 
 		}
+		$scope.message = 'This field must macth your password';
 	};
 
 
