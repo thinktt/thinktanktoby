@@ -1,9 +1,4 @@
-var x = 10;
+var usernameRegEx = /^[a-zA-Z0-9_-]{3,16}$/;
+var passwordRegEx = /^[\u0020-\u007E]{8,64}$/;
 
-function add(a, b) {
-	return a + b;
-}
-
-x = add(10,11);
-console.log(x); 
-
+console.log(usernameRegEx.test(undefined));
