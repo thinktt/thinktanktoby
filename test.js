@@ -1,44 +1,37 @@
 var appy = angular.module('appy', []); 
 var usernameRegEx = /^[a-zA-Z0-9_-]{3,16}$/;
 var passwordRegEx = /^[\u0020-\u007E]{8,64}$/;
+var usernameCharsRegEx = /^[a-zA-Z0-9_-]*$/;
+var passwordCharsRegEx = /^[\u0020-\u007E]*$/;
 
  
 
 appy.controller('SignUpForm', function($scope) {
 	
-	$scope.validUserIcon = ''; 	
-	$scope.validPassIcon = ''; 	
-	$scope.validConfirmIcon = ''; 	
+	var successIcon, warningIcon, noIcon;
+	successIcon =  'glyphicon glyphicon-check text-success';
+	warningIcon = 'glyphicon glyphicon-exclamation-sign text-danger';
+	noIcon = ''; 
+
+	$scope.validUserIcon = noIcon; 	
+	$scope.validPassIcon = noIcon; 	
+	$scope.validConfirmIcon = noIcon; 	
 	$scope.message = ''; 
 	$scope.messageType = '';
 
-
-	$scope.onUsernameFocus = function() {
-		$scope.message = 'Username must be at least 3 characters long and can contain letters and numbers.'; 
-		$scope.validateUsername(); 
-	};
-
-	$scope.onPassFocus = function() {
-		$scope.message = 'Password must be at leat 8 characters long and up to 64.'; 
-		$scope.validatePass(); 
-	};
-
-	$scope.onConfirmFocus = function() {
-		$scope.message = 'This field must macth your password';
-		$scope.confirmPass(); 
-	};
 	
 
 	$scope.validateUsername = function() {
 		if($scope.username === undefined) {
 			//do nothing
 		} else if(usernameRegEx.test($scope.username)) {
-			$scope.validUserIcon = 'glyphicon glyphicon-check text-success'; 
+			$scope.validUserIcon = successIcon; 
 			$scope.messageType = '';
 			$scope.message = '';
 		} else {
-			$scope.message = 'Username must be at least 3 characters long and can contain letters and numbers.';
-			$scope.validUserIcon = 'glyphicon glyphicon-exclamation-sign text-danger';
+			$scope.validUserIcon = warningIcon;
+			$scope.message = 'Username must be at least 3 characters long and '+
+							 'can contain letters and numbers.';
 			$scope.messageType = 'text-danger'; 
 
 		}
@@ -49,13 +42,14 @@ appy.controller('SignUpForm', function($scope) {
 		if($scope.password === undefined) {
 			//do nothing
 		} else if(passwordRegEx.test($scope.password)) {
-			$scope.validPassIcon = 'glyphicon glyphicon-check text-success';
+			$scope.validPassIcon = successIcon;
 			$scope.messageType = ''; 
 			$scope.message = '';
  
 		} else {
-			$scope.message = 'Password must be at leat 8 characters long and up to 64.'; 
-			$scope.validPassIcon = 'glyphicon glyphicon-exclamation-sign text-danger';
+			$scope.validPassIcon = warningIcon;
+			$scope.message = 'Password must be at leat 8 characters long and '+
+							 'up to 64.'; 
 			$scope.messageType = 'text-danger'; 
  
 		}
@@ -66,17 +60,15 @@ appy.controller('SignUpForm', function($scope) {
 		if($scope.passConfirm === undefined) {
 			//do nothing
 		} else if($scope.password === $scope.passConfirm) {
-			$scope.validConfirmIcon = 'glyphicon glyphicon-check text-success'; 
+			$scope.validConfirmIcon = successIcon; 
 			$scope.messageType = ''; 
 			$scope.message = '';
 		} else {
+			$scope.validConfirmIcon = warningIcon; 
 			$scope.message = 'This field must macth your password';
-			$scope.validConfirmIcon = 'glyphicon glyphicon-exclamation-sign text-danger'; 
 			$scope.messageType = 'text-danger'; 
 		}
 	};
-
-
 
 }); 
 
