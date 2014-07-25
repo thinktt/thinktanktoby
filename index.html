@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+
+<html lang="en" ng-app="appy">
+  
+<head>
+	<title>Sign up</title>
+	<meta charset="UTF-8">
+	<link rel="stylesheet" type="text/css" href="css/bootstrapSlate.css">
+	<link rel="stylesheet" type="text/css" href="test.css">
+</head>
+
+  
+<body>
+	
+	<div class="container">&nbsp;</div>
+	
+	<div class = "col-md-12" ng-controller="SignUpForm">	
+	<div class="container col-md-3 well">
+
+		<form class="form-group">
+			<h1>Sign up</h1>
+			
+			Username:
+			<div class="right-inner-addon ">
+				<i ng-class='validUserIcon'></i>
+				<input 
+					class="form-control" 
+					type="text" 
+					ng-model="username"
+					ng-change="validateUsername()" 
+					ng-focus="validateUsername()"
+				></input>
+			</div>
+
+			Password: 
+			<div class="right-inner-addon ">
+				<i ng-class="validPassIcon"></i>
+				<input 
+					class="form-control" 
+					type="password"  
+					ng-model="password"
+					ng-change="validatePass()" 
+					ng-focus="validatePass()"
+				></input> 
+			</div>
+
+			Confirm password:
+			<div class="right-inner-addon ">
+				<i ng-class="validConfirmIcon"></i>
+				<input 
+					class="form-control" 
+					type="password" 
+					ng-model="passConfirm"
+					ng-change="confirmPass()" 
+					ng-focus="confirmPass()"
+				></input> 
+			</div>
+			<br>
+			<button type="submit" class="btn btn-primary">Submit</button>
+		</form>
+	
+		<div class="container col-md-12" ng-class="messageType">
+			{{message}}
+		</div>
+	</div>
+
+
+	</div>
+
+	<script src="angular.min.js"></script>
+	<script src="test.js"></script>
+</body>
+
+</html>
