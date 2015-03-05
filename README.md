@@ -1,3 +1,4 @@
-thinktanktoby.com
-================
-A website to act as a profile my projects and a work bio. Essentially my main github site.  
+
+# Blog
+
+The default [wintersmith](https://github.com/jnordberg/wintersmith) template
